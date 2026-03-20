@@ -24,13 +24,19 @@ Currently this application is still in development with no stable builds.
 If you are looking to contribute to this project you can view the contribution intructions below.
 
 *Planned installation methods:*
+
 **1. Manual installation**
+
 Involves manually downloading the project files from a .zip folder and compiling them yourself with the [.NET SDK](https://dotnet.microsoft.com/en-us/download). 
 Reccomended for individuals with programming experience who want customization of their tools.
+
 **2. Binary installation**
+
 Involves downloading pre-compiled binaries and moving them to the desired location in your device to run.
 Reccomended for users who want the regular application but customization for where they can store the app. With the correct setup, this should be able to make a portable version of the app for flash drives.
+
 **3. Native installation**
+
 I plan on looking into getting installation wizards for the desktop apps and uploading the mobile apps to their respective stores. This may not happen though.
 
 ## Contributing
