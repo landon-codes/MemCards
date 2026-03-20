@@ -18,3 +18,7 @@ Here is an example file for a set called "Example Set" authored by "Someone":
 </CardPackage>
 ```
 Using this method provides safety and privacy for individual users, since I don't have training for safely making an account/database system for the app. It also allows users to freely control who sees the content they make on this app, and how that content is shared or stored.
+
+## Contributing
+Contributions are welcome and appreciated. The [GitHub](https://github.com/landon-codes/MemCards) page for this project often has issues posted for things that need done or for things external contributors can help with.
+The issues page is [here](https://github.com/landon-codes/MemCards/issues).
