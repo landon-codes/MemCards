@@ -22,3 +22,10 @@ Using this method provides safety and privacy for individual users, since I don'
 ## Contributing
 Contributions are welcome and appreciated. The [GitHub](https://github.com/landon-codes/MemCards) page for this project often has issues posted for things that need done or for things external contributors can help with.
 The issues page is [here](https://github.com/landon-codes/MemCards/issues).
+
+### Technologies
+1. .NET SDK (version 9.0 or greater)
+2. .NET MAUI
+
+## License
+This project is under the Apache 2.0 license.
