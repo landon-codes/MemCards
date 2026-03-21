@@ -1,7 +1,7 @@
 # MemCards
 
 ## Description
-MemCards is a multi-platform flash card app that prioritizes rich funtionality without a price tag. MemCards is a free and open source software that can be installed on Windows, Mac, Android, and IOS. This app is built using .NET MAUI and .NET 9.0 to provide this high level of cross platform support.
+MemCards is a multi-platform flash card app that prioritizes rich funtionality without a price tag. MemCards is a free and open source software that can be installed on Windows, Mac, Android, and IOS. This app is built using .NET MAUI and .NET 10.0 to provide this high level of cross platform support.
 
 ## How it Works
 This app uses file packages (the extention is not yet confirmed) to share and save flash card sets. These files are based on XML, and contain the title, author, and list of cards in a set.
@@ -43,7 +43,7 @@ I plan on looking into getting installation wizards for the desktop apps and upl
 Contributions are welcome and appreciated! The [GitHub](https://github.com/landon-codes/MemCards) page for this project often has issues posted for things that need done or for [issues](https://github.com/landon-codes/MemCards/issues) external contributors can help with.
 
 ### Technologies
-1. .NET SDK (version 9.0 or greater)
+1. .NET SDK (version 10.0 or greater)
 2. .NET MAUI
 
 ## License
