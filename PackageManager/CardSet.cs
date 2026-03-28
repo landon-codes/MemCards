@@ -32,7 +32,7 @@ public class CardSet
         set.storageObject["cards"] = new string[cardCount][];
         for (int i = 0; i < cardCount; i++)
         {
-            set.storageObject["cards"]![i] = new string[] {this.cards[i].term, this.cards[i].definition};
+            set.storageObject["cards"]![i] = new string[] {this.cards[i].term, this.cards[i].definition, this.cards[i].imagePath!};
         }
 
         set.Save();
