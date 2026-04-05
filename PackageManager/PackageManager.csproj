@@ -1,9 +1,4 @@
 <Project Sdk="Microsoft.Net.Sdk">
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\JsonStorage\JsonStorage.csproj" />
-    </ItemGroup>
-
     <PropertyGroup>
         <OutputType>Library</OutputType>
         <TargetFramework>net10.0</TargetFramework>
@@ -17,5 +12,9 @@
 
         <Authors>landon-codes</Authors>
     </PropertyGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="landon-codes.JsonStorage" Version="2.0.0" />
+    </ItemGroup>
 
 </Project>
