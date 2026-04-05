@@ -1,5 +1,6 @@
 namespace MemCardsPackageManager;
 
+using System.Text.Json.Nodes;
 using JsonStorage;
 
 public class CardSet
@@ -11,6 +12,55 @@ public class CardSet
 
         description = setDescription;
         authors = setAuthors;
+    }
+    public CardSet (string filePath)
+    {
+        // Read the file
+        StorageDictionary<string, dynamic?> importedSet = new(filePath);
+        importedSet.Load();
+
+        // Get the set data
+        if (importedSet.container["title"] != null)
+        {
+            title = importedSet.container["title"]!;
+        }
+        else
+        {
+            Console.Error.WriteLine("Card does not have a title");
+            Environment.Exit(1);
+        }
+        description = importedSet.container["description"];
+        authors = importedSet.container["authors"];
+        
+        // Get the set cards
+        if (importedSet.container["cards"] != null)
+        {
+            try
+            {
+                cards = new List<Card>();
+                int cardCount = importedSet.container["cards"];
+                for (int i = 0; i < cardCount; i++)
+                {
+                    JsonObject currentCard = importedSet.container["cards"]![i];
+
+                    cards.Add(new Card(
+                        (string)currentCard[0]!,
+                        (string)currentCard[1]!,
+                        (string?)currentCard[2]
+                    ));
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine($"There was an error reading the cards\n{e}");
+                Environment.Exit(1);
+            }
+        }
+        else
+        {
+            Console.Error.WriteLine("The set has no cards.");
+            Environment.Exit(1);
+        }
     }
 
     public string title { get; set; }
