@@ -20,19 +20,19 @@ public class CardSet
 
     public void WriteJson(string filePath)
     {
-        Storage set = new(filePath);
+        StorageDictionary<string, dynamic?> set = new(filePath);
 
         // Create the metadata
-        set.storageObject["title"] = this.title;
-        set.storageObject["description"] = this.description;
-        set.storageObject["authors"] = this.authors;
+        set.container["title"] = this.title;
+        set.container["description"] = this.description;
+        set.container["authors"] = this.authors;
         
         // Sets the cards
         int cardCount = this.cards.Count();
-        set.storageObject["cards"] = new string[cardCount][];
+        set.container["cards"] = new string[cardCount][];
         for (int i = 0; i < cardCount; i++)
         {
-            set.storageObject["cards"]![i] = new string[] {this.cards[i].term, this.cards[i].definition, this.cards[i].imagePath!};
+            set.container["cards"]![i] = new string[] {this.cards[i].term, this.cards[i].definition, this.cards[i].imagePath!};
         }
 
         set.Save();
