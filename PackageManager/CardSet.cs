@@ -1,52 +1,56 @@
 namespace MemCardsPackageManager;
-
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using JsonStorage;
 
 public class CardSet
-{
-    public CardSet(string setTitle, List<Card> setCards, string? setDescription, string? setAuthors)
+{   public CardSet()
     {
-        title = setTitle;
-        cards = setCards;
-
-        description = setDescription;
-        authors = setAuthors;
+        title = "None";
+        description = null;
+        authors = null;
+        cards = new List<Card>();
     }
-    public CardSet (string filePath)
+    public CardSet (string filePath) : this()
     {
         // Read the file
         StorageDictionary<string, dynamic?> importedSet = new(filePath);
         importedSet.Load();
 
-        // Get the set data
-        if (importedSet.container["title"] != null)
+        // Shortens a very long check
+        bool IsNull(string key)
         {
-            title = importedSet.container["title"]!;
+            return !importedSet.container.ContainsKey(key) && importedSet.container[key]!.ValueKind != JsonValueKind.Null;
+        }
+
+        // Get the set data
+        if (!IsNull("title"))
+        {
+            title = importedSet.container["title"]!.ToString();
         }
         else
         {
-            Console.Error.WriteLine("Card does not have a title");
+            Console.Error.WriteLine("Set does not have a title");
             Environment.Exit(1);
         }
         description = importedSet.container["description"];
         authors = importedSet.container["authors"];
         
         // Get the set cards
-        if (importedSet.container["cards"] != null)
+        if (!IsNull("cards"))
         {
             try
             {
                 cards = new List<Card>();
-                int cardCount = importedSet.container["cards"];
+                int cardCount = importedSet.container["cards"]!.GetArrayLength();
                 for (int i = 0; i < cardCount; i++)
                 {
-                    JsonObject currentCard = importedSet.container["cards"]![i];
+                    JsonElement currentCard = importedSet.container["cards"]![i];
 
                     cards.Add(new Card(
-                        (string)currentCard[0]!,
-                        (string)currentCard[1]!,
-                        (string?)currentCard[2]
+                        currentCard[0]!.ToString(),
+                        currentCard[1]!.ToString(),
+                        currentCard[2].ToString()
                     ));
                 }
             }
@@ -62,6 +66,15 @@ public class CardSet
             Environment.Exit(1);
         }
     }
+    public CardSet(string setTitle, List<Card> setCards, string? setDescription, string? setAuthors) : this()
+    {
+        title = setTitle;
+        cards = setCards;
+
+        description = setDescription;
+        authors = setAuthors;
+    }
+    
 
     public string title { get; set; }
     public string? description { get; set; }
