@@ -25,6 +25,12 @@ public partial class MainPage : ContentPage
 				// If there are more than one, we're going to ignore the rest
 				string[] jsonFiles = Directory.GetFiles($"AppData/Cards/{set}", "*.json");
 				CardSet importedSet = new CardSet($"AppData/Cards/{set}/{jsonFiles[0]}");
+
+				CardList.Children.Add(new Button()
+				{
+					Text = importedSet.title,
+					ClassId = jsonFiles[0]
+				});
 			}
 			catch (Exception)
 			{
