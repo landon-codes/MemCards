@@ -1,6 +1,6 @@
 namespace MemCardsPackageManager;
 using System.Text.Json;
-using System.Text.Json.Nodes;
+using System.IO;
 using JsonStorage;
 
 public class CardSet
@@ -83,6 +83,12 @@ public class CardSet
 
     public void WriteJson(string filePath)
     {
+        string? setPath = Path.GetDirectoryName(filePath);
+        if (setPath != null)
+        {
+            Directory.CreateDirectory(setPath);
+        }
+
         StorageDictionary<string, dynamic?> set = new(filePath);
 
         // Create the metadata
