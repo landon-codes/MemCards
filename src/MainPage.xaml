@@ -19,7 +19,8 @@
                 SemanticProperties.Hint="Button to import a set from a package file"/>
 
             <!-- A list containing the saved cards -->
-            <VerticalStackLayout>
+            <VerticalStackLayout x:Name="CardsList">
+
             </VerticalStackLayout>
 
         </VerticalStackLayout>
