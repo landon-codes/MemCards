@@ -5,5 +5,8 @@
         "macatalyst",
         "maccatalyst",
         "memcards"
-    ]
+    ],
+    "cSpell.ignorePaths": [
+        ".gitignore"
+    ],
 }
