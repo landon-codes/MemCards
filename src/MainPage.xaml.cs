@@ -9,33 +9,39 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 
-		if (!Directory.Exists("AppData/Cards"))
-		{
-			Directory.CreateDirectory("AppData/Cards");
-		}
+		string cardsRoot = Path.Combine("AppData", "Cards");
 
-		// Add the cards to the main menu
-		// NOTE: If you have a better idea for how to do this, please do!
-		string[] setDirs = Directory.GetDirectories("AppData/Cards");
-		foreach (string set in setDirs)
+		if (!Directory.Exists(cardsRoot))
+			Directory.CreateDirectory(cardsRoot);
+
+		// Load each card set folder
+		string[] setDirs = Directory.GetDirectories(cardsRoot);
+
+		foreach (string setDir in setDirs)
 		{
 			try
 			{
-				// Sets SHOULD only have **1** json file.
-				// If there are more than one, we're going to ignore the rest
-				string[] jsonFiles = Directory.GetFiles($"AppData/Cards/{set}", "*.json");
-				CardSet importedSet = new CardSet($"AppData/Cards/{set}/{jsonFiles[0]}");
+				// Get JSON files inside this set directory
+				string[] jsonFiles = Directory.GetFiles(setDir, "*.json");
 
-				CardList.Children.Add(new Button()
+				if (jsonFiles.Length == 0)
+					continue; // No valid card set here
+
+				// Use the first JSON file
+				string jsonPath = jsonFiles[0];
+
+				CardSet importedSet = new CardSet(jsonPath);
+
+				CardList.Children.Add(new Button
 				{
 					Text = importedSet.title,
-					ClassId = jsonFiles[0]
+					ClassId = jsonPath
 				});
 			}
 			catch (Exception)
 			{
 				Console.WriteLine("A card set failed to load; it may be corrupted or misconfigured.");
 			}
-		} 
+		}
 	}
 }
