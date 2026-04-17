@@ -92,24 +92,30 @@ public class CardSet
     {
         string? setPath = Path.GetDirectoryName(filePath);
         if (setPath != null)
-        {
             Directory.CreateDirectory(setPath);
-        }
 
-        StorageDictionary<string, dynamic?> set = new(filePath);
+        StorageDictionary<string, JsonElement?> set = new(filePath);
 
-        // Create the metadata
-        set.container["title"] = this.title;
-        set.container["description"] = this.description;
-        set.container["authors"] = this.authors;
-        
-        // Sets the cards
-        int cardCount = this.cards.Count();
-        set.container["cards"] = new string[cardCount][];
-        for (int i = 0; i < cardCount; i++)
+        // Convert simple fields
+        set.container["title"]       = JsonSerializer.SerializeToElement(this.title);
+        set.container["description"] = JsonSerializer.SerializeToElement(this.description);
+        set.container["authors"]     = JsonSerializer.SerializeToElement(this.authors);
+
+        // Build cards array
+        var cardArray = new List<object>();
+
+        foreach (var card in this.cards)
         {
-            set.container["cards"]![i] = new string[] {this.cards[i].term, this.cards[i].definition, this.cards[i].imagePath!};
+            cardArray.Add(new[]
+            {
+                card.term,
+                card.definition,
+                card.imagePath
+            });
         }
+
+        // Convert cards list → JsonElement
+        set.container["cards"] = JsonSerializer.SerializeToElement(cardArray);
 
         set.Save();
     }
