@@ -11,61 +11,68 @@ public class CardSet
         authors = null;
         cards = new List<Card>();
     }
-    public CardSet (string filePath) : this()
+    public CardSet(string filePath) : this()
     {
-        // Read the file
-        StorageDictionary<string, dynamic?> importedSet = new(filePath);
+        // Load the file
+        var importedSet = new StorageDictionary<string, JsonElement?>(filePath);
         importedSet.Load();
 
-        // Shortens a very long check
+        var container = importedSet.container;
+
+        // Helper: safely check for missing or null JSON values
         bool IsNull(string key)
         {
-            return !importedSet.container.ContainsKey(key) && importedSet.container[key]!.ValueKind != JsonValueKind.Null;
+            if (!container.TryGetValue(key, out JsonElement? value))
+                return true;
+
+            // If the value is null → treat as null
+            if (value is null)
+                return true;
+
+            return value.Value.ValueKind == JsonValueKind.Null;
         }
 
-        // Get the set data
-        if (!IsNull("title"))
-        {
-            title = importedSet.container["title"]!.ToString();
-        }
-        else
-        {
-            Console.Error.WriteLine("Set does not have a title");
-            Environment.Exit(1);
-        }
-        description = importedSet.container["description"];
-        authors = importedSet.container["authors"];
-        
-        // Get the set cards
-        if (!IsNull("cards"))
-        {
-            try
-            {
-                cards = new List<Card>();
-                int cardCount = importedSet.container["cards"]!.GetArrayLength();
-                for (int i = 0; i < cardCount; i++)
-                {
-                    JsonElement currentCard = importedSet.container["cards"]![i];
+        // --- Required fields ---
 
-                    cards.Add(new Card(
-                        currentCard[0]!.ToString(),
-                        currentCard[1]!.ToString(),
-                        currentCard[2].ToString()
-                    ));
-                }
-            }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine($"There was an error reading the cards\n{e}");
-                Environment.Exit(1);
-            }
-        }
-        else
+        if (IsNull("title"))
+            throw new InvalidDataException("Set does not have a title.");
+
+        title = container["title"].ToString()!;
+
+        // Optional fields
+        description = IsNull("description") ? null : container["description"]!.ToString();
+        authors     = IsNull("authors")     ? null : container["authors"]!.ToString();
+
+        // --- Cards ---
+
+        if (IsNull("cards"))
+            throw new InvalidDataException("Set has no cards.");
+
+        JsonElement cardsElement = container["cards"]!.Value;
+
+        if (cardsElement.ValueKind != JsonValueKind.Array)
+            throw new InvalidDataException("The 'cards' field must be a JSON array.");
+
+        cards = new List<Card>();
+
+        foreach (var cardElement in cardsElement.EnumerateArray())
         {
-            Console.Error.WriteLine("The set has no cards.");
-            Environment.Exit(1);
+            if (cardElement.ValueKind != JsonValueKind.Array)
+                throw new InvalidDataException("Each card must be an array.");
+
+            var arr = cardElement.EnumerateArray().ToArray();
+
+            if (arr.Length < 3)
+                throw new InvalidDataException("Each card must contain at least 3 elements.");
+
+            cards.Add(new Card(
+                arr[0].ToString(),
+                arr[1].ToString(),
+                arr[2].ToString()
+            ));
         }
     }
+
     public CardSet(string setTitle, List<Card> setCards, string? setDescription, string? setAuthors) : this()
     {
         title = setTitle;
