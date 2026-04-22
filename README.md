@@ -1,23 +1,32 @@
 # MemCards
 
 ## Description
-MemCards is a multi-platform flash card app that prioritizes rich funtionality without a price tag. MemCards is a free and open source software that can be installed on Windows, Mac, Android, and IOS. This app is built using .NET MAUI and .NET 9.0 to provide this high level of cross platform support.
+MemCards is a multi-platform flash card app that prioritizes rich funtionality without a price tag. MemCards is a free and open source software that can be installed on Windows, Mac, Android, and IOS. This app is built using .NET MAUI and .NET 10.0 to provide this high level of cross platform support.
 
 ## How it Works
-This app uses file packages (the extention is not yet confirmed) to share and save flash card sets. These files are based on XML, and contain the title, author, and list of cards in a set.
-Here is an example file for a set called "Example Set" authored by "Someone":
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<CardPackage>
-  <Title>Example Set</Title>
-  <Author>Someone</Author>
-  <Cards>
-    <Card Term="Job" Definition="Uhhhhhhh" />
-    <Card Term="North Africa" Definition="A continent" />
-  </Cards>
-</CardPackage>
+This app uses file packages (the extention is not yet confirmed) to share and save flash card sets. These files are based on Json, and contain the title, author, and list of cards in a set.
+Here is an example file:
+```json
+{
+  "title": "Animal Terms",
+  "description": null,
+  "authors": "someone",
+  "cards":
+  [
+    [
+      "Feline",
+      "A term for cats",
+      "cat.png"
+    ]
+    [
+      "Bovine",
+      "A term for cattle",
+      null
+    ]
+  ]
+}
 ```
-Using this method provides safety and privacy for individual users, since I don't have training for safely making an account/database system for the app. It also allows users to freely control who sees the content they make on this app, and how that content is shared or stored.
+Using this method provides safety and privacy for individual users. It also allows users to freely control who sees the content they make on this app, and how that content is shared or stored.
 
 ## Installation
 Currently this application is still in development with no stable builds.
@@ -37,14 +46,15 @@ Reccomended for users who want the regular application but customization for whe
 
 **3. Native installation**
 
-I plan on looking into getting installation wizards for the desktop apps and uploading the mobile apps to their respective stores. This may not happen though.
+I plan on looking into getting installation wizards for the desktop apps and uploading the mobile apps to their respective stores. *This may not happen.*
 
 ## Contributing
-Contributions are welcome and appreciated! The [GitHub](https://github.com/landon-codes/MemCards) page for this project often has issues posted for things that need done or for [issues](https://github.com/landon-codes/MemCards/issues) external contributors can help with.
+Contributions are welcome and appreciated! The [GitHub page](https://github.com/landon-codes/MemCards) for this project often has issues posted for things that need done or for [issues](https://github.com/landon-codes/MemCards/issues) external contributors can help with.
 
 ### Technologies
-1. .NET SDK (version 9.0 or greater)
+1. .NET SDK (version 10.0 or greater)
 2. .NET MAUI
+3. [JsonStorage](https://github.com/landon-codes/JsonStorage)
 
 ## License
 This project is under the Apache 2.0 license.

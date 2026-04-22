@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.Net.Sdk">
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>MemCardsPackageManager</RootNamespace>
+        <SelfContained>true</SelfContained>
+
+        <VersionPrefix>Prerelease</VersionPrefix>
+        <Version>1.0.0</Version>
+
+        <Authors>landon-codes</Authors>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="landon-codes.JsonStorage" Version="2.0.0" />
+    </ItemGroup>
+
+</Project>
