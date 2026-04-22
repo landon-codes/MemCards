@@ -12,6 +12,7 @@
                 x:Name="NewSetButton" 
                 Text="New Set"
                 SemanticProperties.Hint="Button to create a new flashcard set"
+                Clicked="OnNewSetButtonClicked"
                 />
             <Button
                 x:Name="ImportSetButton"

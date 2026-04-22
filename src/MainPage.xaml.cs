@@ -44,4 +44,9 @@ public partial class MainPage : ContentPage
 			}
 		}
 	}
+
+	public async void OnNewSetButtonClicked(Object? _, EventArgs? __)
+	{
+		await Navigation.PushAsync(new CreateSetPage());
+	}
 }
