@@ -5,5 +5,9 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MemCards.MainWindow"
         Title="MemCards">
-    Welcome to Avalonia!
+    
+    <StackPanel Orientation="Vertical"
+                Background="{DynamicResource Background}">
+        
+    </StackPanel>
 </Window>

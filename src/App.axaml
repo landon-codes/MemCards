@@ -6,5 +6,10 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="Styles/DefualtTheme.axaml"></StyleInclude>
     </Application.Styles>
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="Background">#F7FFFF</SolidColorBrush>
+    </Application.Resources>
 </Application>
