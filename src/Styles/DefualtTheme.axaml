@@ -7,4 +7,16 @@
 		</Border>
 	</Design.PreviewWith>
 
+	<!-- Button styles -->
+	<Style Selector="Button">
+		<Setter Property="Background" Value="#C9FFFF" />
+		<Setter Property="Foreground" Value="Black" />
+		<Setter Property="HorizontalAlignment" Value="Stretch" />
+	</Style>
+	<Style Selector="Button:pointerover /template/ ContentPresenter">
+		<Setter Property="Background" Value="LightCyan" />
+		<Setter Property="Foreground" Value="Black" />
+		<Setter Property="HorizontalAlignment" Value="Stretch" />
+	</Style>
+
 </Styles>

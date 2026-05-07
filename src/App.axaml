@@ -10,6 +10,6 @@
     </Application.Styles>
 
     <Application.Resources>
-        <SolidColorBrush x:Key="Background">#F7FFFF</SolidColorBrush>
+        <SolidColorBrush x:Key="Background">White</SolidColorBrush>
     </Application.Resources>
 </Application>
