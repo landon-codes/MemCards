@@ -7,12 +7,27 @@
         Title="MemCards"
         Background="{DynamicResource Background}">
     
-    <Grid ColumnDefinitions="*">
-        <Border Padding="20, 40">
-            <Grid ColumnDefinitions="*">
-                <Button Content="Button 1" Grid.Row="0" />
-                <Button Content="Button 2" Grid.Row="1" />
-            </Grid>
-        </Border>
-    </Grid>
+    <Border Padding="20, 10"
+        Background="{DynamicResource Background}"
+        CornerRadius="8">
+
+        <Grid RowDefinitions="Auto, *">
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="1"
+                        Margin="0 20 0 0"
+                        Spacing="12">
+
+                <Button Content="Card Set 1" />
+
+                <Button Content="Card Set 2" />
+
+                <Button Content="Card Set 3" />
+
+                <Button Content="Create New Set" />
+            </StackPanel>
+
+        </Grid>
+    </Border>
+
 </Window>
