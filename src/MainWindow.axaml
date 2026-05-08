@@ -4,10 +4,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MemCards.MainWindow"
-        Title="MemCards">
+        Title="MemCards"
+        Background="{DynamicResource Background}">
     
-    <StackPanel Orientation="Vertical"
-                Background="{DynamicResource Background}">
-        
-    </StackPanel>
+    <Border Padding="20, 10"
+        Background="{DynamicResource Background}"
+        CornerRadius="8">
+
+        <Grid RowDefinitions="Auto, *">
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="1"
+                        Margin="0 20 0 0"
+                        Spacing="12">
+
+                <Button Content="Card Set 1" />
+
+                <Button Content="Card Set 2" />
+
+                <Button Content="Card Set 3" />
+
+                <Button Content="Create New Set" />
+            </StackPanel>
+
+        </Grid>
+    </Border>
+
 </Window>
