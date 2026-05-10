@@ -30,11 +30,44 @@ Here is an example file:
 ```
 Using this method provides safety and privacy for individual users. It also allows users to freely control who sees the content they make on this app, and how that content is shared or stored.
 
+### Package Manager
+
+MemCards uses a simple API package manager. Its code can be found in the `PackageManager` directory.
+
+The package manager has two classes:
+
+1. Card
+2. CardSet
+
+**Card**
+
+The Card class represents a card in a set. It contains a term, definition, and potential path to an image.
+
+The code is very simple, as it is only built to contain data, and has no functions.
+
+**CardSet**
+
+The card set represents a whole flashcard set, and is more complicated.
+
+The CardSet class contains a title, potential description, potential author(s), and a list of cards.
+
+There is only one function, which is the `WriteJson` function. It is used to convert the CardSet class into a Json file that can be saved and moved. The most common use for this function will be when creating set packages. 
+
+It has three constructors: an empty constructor, an import constructor, and a full constructor.
+
+The empty constructor sets the base values as follows:
+- `title` : `"None"`
+- `description` : `null`
+- `authors` : `null`
+- `cards` : `new List<Cards>();`
+
+The import constructor takes the path (as a string) to a json file for a package. It reads the file and uses the information inside to generate an instance of the CardSet class.
+
+The full constructor takes arguments for all the needed data and generates an instance of the CardSet class.
+
 ## Installation
 Currently this application is still in development with no stable builds.
 If you are looking to contribute to this project you can view the contribution instructions below.
-
-*Planned installation methods:*
 
 **1. Manual installation**
 
