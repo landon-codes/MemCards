@@ -1,10 +1,10 @@
 # MemCards
 
 ## Description
-MemCards is a multi-platform flash card app that prioritizes rich funtionality without a price tag. MemCards is a free and open source software that can be installed on Windows, Mac, Android, and IOS. This app is built using .NET MAUI and .NET 10.0 to provide this high level of cross platform support.
+MemCards is a multi-platform flash card app that prioritizes rich functionality without a price tag. MemCards is a free and open source software that can be installed on Windows, Mac, Android, and IOS. This app is built using .NET MAUI and .NET 10.0 to provide this high level of cross platform support.
 
 ## How it Works
-This app uses file packages (the extention is not yet confirmed) to share and save flash card sets. These files are based on Json, and contain the title, author, and list of cards in a set.
+This app uses file packages (the extension is not yet confirmed) to share and save flash card sets. These files are based on Json, and contain the title, author, and list of cards in a set.
 Here is an example file:
 ```json
 {
@@ -30,19 +30,19 @@ Using this method provides safety and privacy for individual users. It also allo
 
 ## Installation
 Currently this application is still in development with no stable builds.
-If you are looking to contribute to this project you can view the contribution intructions below.
+If you are looking to contribute to this project you can view the contribution instructions below.
 
 *Planned installation methods:*
 
 **1. Manual installation**
 
 Involves manually downloading the project files from a .zip folder and compiling them yourself with the [.NET SDK](https://dotnet.microsoft.com/en-us/download). 
-Reccomended for individuals with programming experience who want customization of their tools.
+Recommended for individuals with programming experience who want customization of their tools.
 
 **2. Binary installation**
 
 Involves downloading pre-compiled binaries and moving them to the desired location in your device to run.
-Reccomended for users who want the regular application but customization for where they can store the app. With the correct setup, this should be able to make a portable version of the app for flash drives.
+Recommended for users who want the regular application but customization for where they can store the app. With the correct setup, this should be able to make a portable version of the app for flash drives.
 
 **3. Native installation**
 
